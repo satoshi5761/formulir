@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrasi</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333333;
+      margin-bottom: 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, select {
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border 0.3s;
+    }
+
+    input:focus, select:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .success {
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Event Organizer Workshop Registration</h2>
+    <form id="myForm">
+      <input name="name" placeholder="Nama" required />
+      <input name="email" type="email" placeholder="Email" required />
+      
+      <select name="organization" required>
+        <option value="">Select your organization</option>
+        <option>HMTI</option>
+        <option>HMSI</option>
+        <option>HMPSM</option>
+        <option>HMPSA</option>
+        <option>HMDP</option>
+        <option>HMA ATRIVM</option>
+        <option>BEMU</option>
+        <option>BEM FTeol</option>
+        <option>BEM FABIO</option>
+        <option>BEM FTI</option>
+        <option>BEM FKHUM</option>
+        <option>BEM FK</option>
+        <option>BEM FB</option>
+        <option>BEM FAD</option>
+        <option>BEM PBI</option>
+        <option>BPMU</option>
+        <option>BPM FTI</option>
+        <option>BPM FTeol</option>
+        <option>BPM FK</option>
+        <option>BPM FB</option>
+        <option>BPM FAD</option>
+        <option>BPM FABIO</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="message" class="success"></div>
+  </div>
+
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const form = new URLSearchParams(new FormData(this)).toString();
+  
+      fetch("https://script.google.com/macros/s/AKfycbybhIy05iJLzfbcnZDwFyzKxpI0ijFTNqenqaWmgDDe4iHJRunJ-THLaH62zVkzjr0i/exec", {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: form
+      }) 
+      .then(response => response.text())
+      .then(result => {
+        alert("Submitted! please join https://chat.whatsapp.com/LvIr5uPyxiG8jwXRRIbWZe")
+        this.reset();
+      })
+      .catch(error => {
+        alert("Submission failed: " + error);
+      });
+    });
+  </script>
+</body>
+</html>
